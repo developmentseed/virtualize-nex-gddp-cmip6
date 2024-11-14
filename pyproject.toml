@@ -1,0 +1,120 @@
+[project]
+name = "virtualize-nex-gddp-cmip6"
+description = "Create virtual Zarr store for NASA NEX-GDDP-CMIP6 using VirtualiZarr"
+authors = [{ name = "Max Jones", email = "max@developmentseed.org" }]
+readme = "README.md"
+keywords = ['python']
+requires-python = ">=3.10,<4.0"
+license = { text = "Apache-2.0" }
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Natural Language :: English",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+dynamic = ["version"]
+dependencies = [
+    "VirtualiZarr>=1.1.0",
+    "fastparquet",
+    "fsspec",
+    "h5netcdf",
+    "h5py",
+    "kerchunk>=0.2.5",
+    "netcdf4",
+    "pytest",
+    "ruff",
+    "s3fs",
+    "scipy",
+]
+
+
+[project.urls]
+Repository = "https://github.com/developmentseed/virtualize-nex-gddp-cmip6"
+
+[tool.uv]
+dev-dependencies = [
+    "pooch",
+    "pytest>=7.2.0",
+    "pre-commit>=2.20.0",
+    "pytest-mypy",
+    "deptry>=0.20.0",
+    "mypy>=0.991",
+    "ruff>=0.6.9",
+]
+
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = ["virtualize_nex_gddp_cmip6"]
+
+[tool.mypy]
+files = ["virtualize_nex_gddp_cmip6"]
+disallow_untyped_defs = true
+disallow_any_unimported = true
+no_implicit_optional = true
+check_untyped_defs = true
+warn_return_any = true
+warn_unused_ignores = true
+show_error_codes = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py39"
+line-length = 120
+fix = true
+
+[tool.ruff.lint]
+select = [
+    # flake8-2020
+    "YTT",
+    # flake8-bandit
+    "S",
+    # flake8-bugbear
+    "B",
+    # flake8-builtins
+    "A",
+    # flake8-comprehensions
+    "C4",
+    # flake8-debugger
+    "T10",
+    # flake8-simplify
+    "SIM",
+    # isort
+    "I",
+    # mccabe
+    "C90",
+    # pycodestyle
+    "E", "W",
+    # pyflakes
+    "F",
+    # pygrep-hooks
+    "PGH",
+    # pyupgrade
+    "UP",
+    # ruff
+    "RUF",
+    # tryceratops
+    "TRY",
+]
+ignore = [
+    # LineTooLong
+    "E501",
+    # DoNotAssignLambda
+    "E731",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]
+
+[tool.ruff.format]
+preview = true
