@@ -9,7 +9,7 @@ You can contribute in many ways:
 
 ## Report Bugs
 
-Report bugs at https://github.com/maxrjones/virtualize-nex-gddp-cmip6/issues
+Report bugs at https://github.com/developmentseed/virtualize-nex-gddp-cmip6/issues
 
 If you are reporting a bug, please include:
 
@@ -24,7 +24,7 @@ Anything tagged with "bug" and "help wanted" is open to whoever wants to impleme
 
 ## Submit Feedback
 
-The best way to send feedback is to file an issue at https://github.com/maxrjones/virtualize-nex-gddp-cmip6/issues.
+The best way to send feedback is to file an issue at https://github.com/developmentseed/virtualize-nex-gddp-cmip6/issues.
 
 If you are proposing a new feature:
 
