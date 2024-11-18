@@ -4,7 +4,7 @@ description = "Create virtual Zarr store for NASA NEX-GDDP-CMIP6 using VirtualiZ
 authors = [{ name = "Max Jones", email = "max@developmentseed.org" }]
 readme = "README.md"
 keywords = ['python']
-requires-python = ">=3.11,<4.0"
+requires-python = ">=3.11,<3.12"
 license = { text = "Apache-2.0" }
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -15,7 +15,6 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
-    "Programming Language :: Python :: 3.13",
 ]
 dynamic = ["version"]
 dependencies = [
