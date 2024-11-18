@@ -30,7 +30,7 @@ def get_inventory(version: Literal["1.0", "1.1", "1.2"]) -> pd.DataFrame:
     return df.set_index("file")
 
 
-def get_uris() -> list:
+def get_uris() -> pd.DataFrame:
     """Get a dataframe containing file URIs for the latest releases of the NASA NEX-GDDP-CMIP6 data.
 
     Returns:

@@ -20,7 +20,7 @@ classifiers = [
 ]
 dynamic = ["version"]
 dependencies = [
-    "VirtualiZarr>=1.1.0",
+    "VirtualiZarr @ git+https://github.com/zarr-developers/VirtualiZarr.git@main",
     "fastparquet",
     "fsspec",
     "h5netcdf",
@@ -31,6 +31,7 @@ dependencies = [
     "ruff",
     "s3fs",
     "scipy",
+    "dask[complete]"
 ]
 
 
@@ -46,6 +47,7 @@ dev-dependencies = [
     "deptry>=0.20.0",
     "mypy>=0.991",
     "ruff>=0.6.9",
+    "pandas-stubs",
 ]
 
 [build-system]
@@ -56,14 +58,73 @@ build-backend = "setuptools.build_meta"
 py-modules = ["virtualize_nex_gddp_cmip6"]
 
 [tool.mypy]
+# Based on Xarray's MyPy configuration
 files = ["virtualize_nex_gddp_cmip6"]
-disallow_untyped_defs = true
-disallow_any_unimported = true
-no_implicit_optional = true
-check_untyped_defs = true
-warn_return_any = true
+enable_error_code = ["ignore-without-code", "redundant-self", "redundant-expr"]
+exclude = [
+  'build',
+]
+show_error_context = true
+warn_redundant_casts = true
+warn_unused_configs = true
 warn_unused_ignores = true
-show_error_codes = true
+
+# Much of the numerical computing stack doesn't have type annotations yet.
+[[tool.mypy.overrides]]
+ignore_missing_imports = true
+module = [
+  "affine.*",
+  "bottleneck.*",
+  "cartopy.*",
+  "cf_units.*",
+  "cfgrib.*",
+  "cftime.*",
+  "cloudpickle.*",
+  "cubed.*",
+  "cupy.*",
+  "fsspec.*",
+  "h5netcdf.*",
+  "h5py.*",
+  "iris.*",
+  "mpl_toolkits.*",
+  "nc_time_axis.*",
+  "netCDF4.*",
+  "netcdftime.*",
+  "numcodecs.*",
+  "opt_einsum.*",
+  "pint.*",
+  "pooch.*",
+  "pyarrow.*",
+  "pydap.*",
+  "scipy.*",
+  "seaborn.*",
+  "setuptools",
+  "sparse.*",
+  "toolz.*",
+  "zarr.*",
+  "numpy.exceptions.*", # remove once support for `numpy<2.0` has been dropped
+  "array_api_strict.*",
+]
+# Start off with these
+warn_unused_ignores = true
+# Getting these passing should be easy
+strict_concatenate = true
+strict_equality = true
+# Strongly recommend enabling this one as soon as you can
+check_untyped_defs = true
+# These shouldn't be too much additional work, but may be tricky to
+# get passing if you use a lot of untyped libraries
+disallow_any_generics = true
+disallow_subclassing_any = true
+disallow_untyped_decorators = true
+# These next few are various gradations of forcing use of type annotations
+disallow_incomplete_defs = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+# This one isn't too hard to get passing, but return on investment is lower
+no_implicit_reexport = true
+# This one can be tricky to get passing if you use a lot of untyped libraries
+warn_return_any = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
