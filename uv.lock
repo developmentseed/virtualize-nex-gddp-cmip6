@@ -1968,8 +1968,8 @@ wheels = [
 
 [[package]]
 name = "virtualizarr"
-version = "1.1.1.dev19+g456f502"
-source = { git = "https://github.com/zarr-developers/VirtualiZarr.git?rev=add-py.typed#456f5024f601cf7edfb89dd411f5e5717b8d76d6" }
+version = "1.1.1.dev19+g5c3e204"
+source = { git = "https://github.com/zarr-developers/VirtualiZarr.git?rev=main#5c3e204a04977d713a131e7d8ad266ec41b53d62" }
 dependencies = [
     { name = "numcodecs" },
     { name = "numpy" },
@@ -2023,7 +2023,7 @@ requires-dist = [
     { name = "ruff" },
     { name = "s3fs" },
     { name = "scipy" },
-    { name = "virtualizarr", git = "https://github.com/zarr-developers/VirtualiZarr.git?rev=add-py.typed" },
+    { name = "virtualizarr", git = "https://github.com/zarr-developers/VirtualiZarr.git?rev=main" },
 ]
 
 [package.metadata.requires-dev]
