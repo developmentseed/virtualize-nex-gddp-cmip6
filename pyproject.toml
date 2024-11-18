@@ -4,7 +4,7 @@ description = "Create virtual Zarr store for NASA NEX-GDDP-CMIP6 using VirtualiZ
 authors = [{ name = "Max Jones", email = "max@developmentseed.org" }]
 readme = "README.md"
 keywords = ['python']
-requires-python = ">=3.10,<4.0"
+requires-python = ">=3.11,<4.0"
 license = { text = "Apache-2.0" }
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -13,25 +13,20 @@ classifiers = [
     "Natural Language :: English",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
 ]
 dynamic = ["version"]
 dependencies = [
-    "VirtualiZarr @ git+https://github.com/zarr-developers/VirtualiZarr.git@main",
-    "fastparquet",
-    "fsspec",
-    "h5netcdf",
+    "dask[complete]",
     "h5py",
-    "kerchunk>=0.2.5",
-    "netcdf4",
-    "pytest",
-    "ruff",
+    "icechunk",
+    "kerchunk @ git+https://github.com/mpiannucci/kerchunk@v3",
     "s3fs",
-    "scipy",
-    "dask[complete]"
+    "VirtualiZarr @ git+https://github.com/zarr-developers/VirtualiZarr.git@main",
+    "xarray",
+    "zarr",
 ]
 
 
@@ -39,12 +34,12 @@ dependencies = [
 Repository = "https://github.com/developmentseed/virtualize-nex-gddp-cmip6"
 
 [tool.uv]
+prerelease = "allow"
 dev-dependencies = [
     "pooch",
     "pytest>=7.2.0",
     "pre-commit>=2.20.0",
     "pytest-mypy",
-    "deptry>=0.20.0",
     "mypy>=0.991",
     "ruff>=0.6.9",
     "pandas-stubs",
