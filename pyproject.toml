@@ -20,7 +20,7 @@ classifiers = [
 ]
 dynamic = ["version"]
 dependencies = [
-    "VirtualiZarr @ git+https://github.com/zarr-developers/VirtualiZarr.git@add-py.typed",
+    "VirtualiZarr @ git+https://github.com/zarr-developers/VirtualiZarr.git@main",
     "fastparquet",
     "fsspec",
     "h5netcdf",
