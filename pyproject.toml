@@ -46,6 +46,7 @@ dev-dependencies = [
     "deptry>=0.20.0",
     "mypy>=0.991",
     "ruff>=0.6.9",
+    "pandas-stubs",
 ]
 
 [build-system]
@@ -64,6 +65,31 @@ check_untyped_defs = true
 warn_return_any = true
 warn_unused_ignores = true
 show_error_codes = true
+
+[[tool.mypy.overrides]]
+module = "fsspec.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "numcodecs.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "kerchunk.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "ujson.*"
+ignore_missing_imports = true
+
+
+[[tool.mypy.overrides]]
+module = "dask.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "virtualizarr.*"
+ignore_missing_imports = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
