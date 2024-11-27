@@ -4,16 +4,15 @@ from dask.delayed import Delayed
 from virtualizarr import open_virtual_dataset
 
 
-def generate_virtual_dataset(file: str, storage_options: dict) -> xr.Dataset:
+def generate_virtual_dataset(file: str) -> xr.Dataset:
     """Generate a virtual dataset for a NetCDF file
 
     Args:
         file (str): Dataset URI
-        storage_options (dict): Options to pass through to fsspec for reading the dataset
-
     Returns:
         xr.Dataset: virtual dataset containing metadata and data references
     """
+    storage_options = {"anon": True, "default_fill_cache": False, "default_cache_type": "none"}
     return open_virtual_dataset(file, indexes={}, reader_options={"storage_options": storage_options})
 
 
@@ -26,8 +25,7 @@ def generate_tasks(uris: list[str]) -> list[Delayed]:
     Returns:
         list[Delayed]: List of dask delayed objects for virtualized datasets
     """
-    storage_options = {"anon": True, "default_fill_cache": False, "default_cache_type": "first"}
-    tasks = [dask.delayed(generate_virtual_dataset)(file, storage_options) for file in uris]
+    tasks = [dask.delayed(generate_virtual_dataset)(file) for file in uris]
     return tasks
 
 
